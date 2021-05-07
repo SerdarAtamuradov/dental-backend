@@ -3,12 +3,12 @@ const { Schema } = mongoose;
 
 const AppointmentSchema = new Schema(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "Patient" },
-    pain: String,
+    pain: String, //в видео dentNumber
     diagnosis: String,
     price: Number,
     date: String,
     time: String,
+    patient: { type: Schema.Types.ObjectId, ref: "Patient" },
   },
   {
     timestamps: true,
