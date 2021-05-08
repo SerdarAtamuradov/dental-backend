@@ -2,7 +2,7 @@ const { validationResult } = require("express-validator");
 const { Appointment, Patient } = require("../models");
 
 function AppointmentController() {}
-
+//CRUD- CREATE READ UPDATE DELETE
 const create = async function (req, res) {
   const errors = validationResult(req);
 
@@ -55,6 +55,22 @@ const create = async function (req, res) {
       data: doc,
     });
   });
+};
+
+const show = async function (req, res) {
+  const appointmentId = req.params.id;
+  try {
+    const appointment = await Appointment.findById(appointmentId).exec();
+    res.json({
+      status: "success",
+      data: appointment,
+    });
+  } catch (e) {
+    return res.status(404).json({
+      status: false,
+      message: "APPOINTMENT_NOT_FOUND",
+    });
+  }
 };
 
 const update = async function (req, res) {
@@ -161,8 +177,9 @@ const all = function (req, res) {
 AppointmentController.prototype = {
   all,
   create,
-  remove,
+  show,
   update,
+  remove,
 };
 
 module.exports = AppointmentController;
