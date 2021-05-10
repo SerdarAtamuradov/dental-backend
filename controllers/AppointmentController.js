@@ -2,7 +2,7 @@ const { validationResult } = require("express-validator");
 const { Appointment, Patient } = require("../models");
 
 function AppointmentController() {}
-//CRUD- CREATE READ UPDATE DELETE
+//CRUD - CREATE READ UPDATE DELETE
 const create = async function (req, res) {
   const errors = validationResult(req);
 

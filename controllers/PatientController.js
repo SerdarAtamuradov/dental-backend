@@ -36,10 +36,13 @@ const create = function (req, res) {
 const show = async function (req, res) {
   const patientId = req.params.id;
   try {
-    const patient = await Patient.findById(patientId).exec();
+    const patient = await Patient.findById(patientId)
+      .populate("appointments")
+      .exec();
+
     res.json({
       status: "success",
-      data: patient,
+      data: { ...patient._doc, appointments: patient.appointments },
     });
   } catch (e) {
     return res.status(404).json({
