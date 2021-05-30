@@ -4,8 +4,8 @@ const { Schema } = mongoose;
 const PatientSchema = new Schema(
   {
     id: String,
-    fullname: String,
-    phone: String,
+    fullname: String, //ФИО
+    phone: String, //Номер телефона
   },
   {
     timestamps: true,

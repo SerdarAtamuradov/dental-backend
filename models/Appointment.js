@@ -3,12 +3,12 @@ const { Schema } = mongoose;
 
 const AppointmentSchema = new Schema(
   {
-    pain: String, //в видео dentNumber
-    diagnosis: String,
-    price: Number,
-    date: String,
-    time: String,
-    patient: { type: Schema.Types.ObjectId, ref: "Patient" },
+    pain: String, //Боль
+    diagnosis: String, //Диагноз
+    price: Number, //Цена
+    date: String, //Дата
+    time: String, //Время
+    patient: { type: Schema.Types.ObjectId, ref: "Patient" }, //Пациент и его данные
   },
   {
     timestamps: true,

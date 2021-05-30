@@ -1,5 +1,8 @@
 const { validationResult } = require("express-validator");
 const { Appointment, Patient } = require("../models");
+const dayjs = require("dayjs");
+const { groupBy, reduce } = require("lodash");
+const ruLocale = require("dayjs/locale/ru");
 
 function AppointmentController() {}
 //CRUD - CREATE READ UPDATE DELETE
@@ -167,9 +170,26 @@ const all = function (req, res) {
         });
       }
 
+      // res.json({
+      //   status: "success",
+      //   data: docs,
+      // });
       res.json({
-        status: "success",
-        data: docs,
+        status: "succces",
+        data: reduce(
+          groupBy(docs, "date"),
+          (result, value, key) => {
+            result = [
+              ...result,
+              {
+                title: dayjs(key).locale(ruLocale).format("D MMMM"),
+                data: value,
+              },
+            ];
+            return result;
+          },
+          []
+        ),
       });
     });
 };
