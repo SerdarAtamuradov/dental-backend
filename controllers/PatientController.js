@@ -8,6 +8,7 @@ const create = function (req, res) {
   const data = {
     fullname: req.body.fullname,
     phone: req.body.phone,
+    address: req.body.address,
   };
 
   if (!errors.isEmpty()) {
@@ -59,6 +60,7 @@ const update = async function (req, res) {
   const data = {
     fullname: req.body.fullname,
     phone: req.body.phone,
+    address: req.body.address,
   };
 
   if (!errors.isEmpty()) {

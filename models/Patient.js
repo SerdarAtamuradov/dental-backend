@@ -6,6 +6,7 @@ const PatientSchema = new Schema(
     id: String,
     fullname: String, //ФИО
     phone: String, //Номер телефона
+    address: String, //Адрес
   },
   {
     timestamps: true,
